@@ -132,19 +132,19 @@
 
 ## 11. Routing Configuration
 
-- [ ] 11.1 Update `/src/router/index.ts` with all routes (movies, rooms, sessions with list/create/edit)
-- [ ] 11.2 Implement lazy loading for all view components using dynamic imports
-- [ ] 11.3 Create `/src/views/Dashboard.vue` as home page with summary statistics
-- [ ] 11.4 Add navigation guard for handling unknown routes (404 redirect)
+- [x] 11.1 Update `/src/router/index.ts` with all routes (movies, rooms, sessions with list/create/edit)
+- [x] 11.2 Implement lazy loading for all view components using dynamic imports
+- [x] 11.3 Create `/src/views/Dashboard.vue` as home page with summary statistics
+- [x] 11.4 Add navigation guard for handling unknown routes (404 redirect)
 - [ ] 11.5 Write route tests verifying each route renders correct component
 
 ## 12. Layout and Navigation
 
-- [ ] 12.1 Create `/src/components/layout/AppLayout.vue` with header, sidebar, and main content area
-- [ ] 12.2 Create `/src/components/layout/AppHeader.vue` with application title and navigation menu
-- [ ] 12.3 Create `/src/components/layout/AppSidebar.vue` with links to Movies, Rooms, Sessions, Dashboard
-- [ ] 12.4 Implement responsive behavior in AppLayout (collapsible sidebar on mobile)
-- [ ] 12.5 Add active route highlighting in navigation menu
+- [x] 12.1 Create `/src/components/layout/AppLayout.vue` with header, sidebar, and main content area
+- [x] 12.2 Create `/src/components/layout/AppHeader.vue` with application title and navigation menu
+- [x] 12.3 Create `/src/components/layout/AppSidebar.vue` with links to Movies, Rooms, Sessions, Dashboard
+- [x] 12.4 Implement responsive behavior in AppLayout (collapsible sidebar on mobile)
+- [x] 12.5 Add active route highlighting in navigation menu
 
 ## 13. Error Handling and UX Polish
 
