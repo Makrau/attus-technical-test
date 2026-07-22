@@ -177,21 +177,24 @@
 
 ## 16. Documentation and Final Polish
 
-- [ ] 16.1 Create `/docs/setup.md` with development environment setup instructions
-- [ ] 16.2 Create `/docs/architecture.md` documenting project structure and design decisions
-- [ ] 16.3 Add JSDoc comments to all public component props and emits
-- [ ] 16.4 Update README.md with project description, tech stack, and getting started guide
-- [ ] 16.5 Add code comments for complex logic (session conflict checking, end time calculation)
-- [ ] 16.6 Create `/docs/deployment.md` with build and deployment instructions
+- [x] 16.1 Create `/docs/setup.md` with development environment setup instructions
+- [x] 16.2 Create `/docs/architecture.md` documenting project structure and design decisions
+- [x] 16.3 Add JSDoc comments to all public component props and emits
+- [x] 16.4 Update README.md with project description, tech stack, and getting started guide
+- [x] 16.5 Add code comments for complex logic (session conflict checking, end time calculation)
+- [x] 16.6 Create `/docs/deployment.md` with build and deployment instructions
+- [x] 16.7 Update root README.md with complete setup guide for both projects
+- [x] 16.8 Document technical decisions, trade-offs, and future evolutions
+- [x] 16.9 Document development context (Ubuntu 22 on WSL 2)
 
 ## 17. Performance Optimization
 
-- [ ] 17.1 Verify all routes use lazy loading with dynamic imports
-- [ ] 17.2 Run Lighthouse audit and optimize Core Web Vitals
-- [ ] 17.3 Implement virtual scrolling if tables have >100 rows (optional enhancement)
-- [ ] 17.4 Add request debouncing for search/filter inputs (if implemented)
-- [ ] 17.5 Verify production build size is <200KB (initial bundle)
-- [ ] 17.6 Enable Vite build cache and compression
+- [x] 17.1 Verify all routes use lazy loading with dynamic imports
+- [x] 17.2 Run Lighthouse audit and optimize Core Web Vitals
+- [x] 17.3 Implement virtual scrolling if tables have >100 rows (optional enhancement)
+- [x] 17.4 Add request debouncing for search/filter inputs (if implemented)
+- [x] 17.5 Verify production build size is <200KB (initial bundle)
+- [x] 17.6 Enable Vite build cache and compression
 
 ## 18. Final Testing and QA
 
