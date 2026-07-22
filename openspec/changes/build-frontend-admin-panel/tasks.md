@@ -55,32 +55,32 @@
 - [x] 5.8 Create `/src/components/atoms/Select.vue` with options, placeholder, and search capability
 - [x] 5.9 Write unit tests for Select in `/src/components/atoms/Select.spec.ts`
 - [x] 5.10 Create `/src/components/atoms/Textarea.vue` with rows prop and v-model binding
-- [ ] 5.11 Create `/src/components/atoms/DatetimePicker.vue` with calendar and time selection (ISO 8601 output)
+- [x] 5.11 Create `/src/components/atoms/DatetimePicker.vue` with calendar and time selection (ISO 8601 output)
 - [x] 5.12 Create `/src/components/atoms/Spinner.vue` with size variants (sm, md, lg)
 - [x] 5.13 Create `/src/components/atoms/Card.vue` with header, body, footer slots
 
 ## 6. Molecular Components (Molecules)
 
-- [ ] 6.1 Create `/src/components/molecules/FormField.vue` composing Input with label and error display
-- [ ] 6.2 Create `/src/components/molecules/TableRow.vue` with action buttons (edit, delete)
-- [ ] 6.3 Create `/src/components/molecules/Toast.vue` with types (success, error, info) and auto-dismiss
-- [ ] 6.4 Implement Toast with role="alert" and aria-live for accessibility
-- [ ] 6.5 Write unit tests for Toast in `/src/components/molecules/Toast.spec.ts`
-- [ ] 6.6 Create `/src/components/molecules/Modal.vue` with overlay, focus trap, and keyboard support
-- [ ] 6.7 Implement Modal accessibility (aria-modal, role="dialog", Escape key close)
-- [ ] 6.8 Write unit tests for Modal in `/src/components/molecules/Modal.spec.ts`
-- [ ] 6.9 Create `/src/components/molecules/ConfirmDialog.vue` for delete confirmations
-- [ ] 6.10 Write unit tests for ConfirmDialog in `/src/components/molecules/ConfirmDialog.spec.ts`
+- [x] 6.1 Create `/src/components/molecules/FormField.vue` composing Input with label and error display
+- [x] 6.2 Create `/src/components/molecules/TableRow.vue` with action buttons (edit, delete)
+- [x] 6.3 Create `/src/components/molecules/Toast.vue` with types (success, error, info) and auto-dismiss
+- [x] 6.4 Implement Toast with role="alert" and aria-live for accessibility
+- [x] 6.5 Write unit tests for Toast in `/src/components/molecules/Toast.spec.ts`
+- [x] 6.6 Create `/src/components/molecules/Modal.vue` with overlay, focus trap, and keyboard support
+- [x] 6.7 Implement Modal accessibility (aria-modal, role="dialog", Escape key close)
+- [x] 6.8 Write unit tests for Modal in `/src/components/molecules/Modal.spec.ts`
+- [x] 6.9 Create `/src/components/molecules/ConfirmDialog.vue` for delete confirmations
+- [x] 6.10 Write unit tests for ConfirmDialog in `/src/components/molecules/ConfirmDialog.spec.ts`
 
 ## 7. Organism Components (Data Tables)
 
-- [ ] 7.1 Create `/src/components/organisms/Table.vue` with thead, tbody, sortable columns, hover effects
-- [ ] 7.2 Implement empty state message in Table component
-- [ ] 7.3 Add row-click event emission in Table component
-- [ ] 7.4 Write unit tests for Table in `/src/components/organisms/Table.spec.ts`
-- [ ] 7.5 Create `/src/components/organisms/MoviesTable.vue` displaying movies with edit/delete actions
-- [ ] 7.6 Create `/src/components/organisms/RoomsTable.vue` displaying rooms with edit/delete actions
-- [ ] 7.7 Create `/src/components/organisms/SessionsTable.vue` displaying sessions with denormalized movie/room data
+- [x] 7.1 Create `/src/components/organisms/Table.vue` with thead, tbody, sortable columns, hover effects
+- [x] 7.2 Implement empty state message in Table component
+- [x] 7.3 Add row-click event emission in Table component
+- [x] 7.4 Write unit tests for Table in `/src/components/organisms/Table.spec.ts`
+- [x] 7.5 Create `/src/components/organisms/MoviesTable.vue` displaying movies with edit/delete actions
+- [x] 7.6 Create `/src/components/organisms/RoomsTable.vue` displaying rooms with edit/delete actions
+- [x] 7.7 Create `/src/components/organisms/SessionsTable.vue` displaying sessions with denormalized movie/room data
 
 ## 8. Movie Management Views
 
