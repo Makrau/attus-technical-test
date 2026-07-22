@@ -44,6 +44,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      params.permit(:title, :director, :duration, :synopsis)
+      params.expect(movie: [:title, :director, :duration, :synopsis])
     end
 end
