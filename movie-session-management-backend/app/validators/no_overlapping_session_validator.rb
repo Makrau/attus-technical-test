@@ -9,7 +9,8 @@ class NoOverlappingSessionValidator < ActiveModel::Validator
              starts_at: session.starts_at, ends_at: session.ends_at)
 
     if overlapping.exists?
-      session.errors.add(:base, "There is already a session in this room at that time")
+      session.errors.add(:starts_at, "conflicts with an existing session in this room")
+      session.errors.add(:room_id, "already has a session scheduled at this time")
     end
   end
 end
