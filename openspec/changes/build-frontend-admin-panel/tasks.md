@@ -84,18 +84,19 @@
 
 ## 8. Movie Management Views
 
-- [ ] 8.1 Create `/src/views/MoviesList.vue` with table, loading state, empty state, and "Create Movie" button
-- [ ] 8.2 Implement fetchMovies call on component mount in MoviesList
-- [ ] 8.3 Add navigation to create/edit routes in MoviesList
-- [ ] 8.4 Implement delete confirmation dialog in MoviesList
-- [ ] 8.5 Write unit tests for MoviesList in `/src/views/MoviesList.spec.ts`
-- [ ] 8.6 Create `/src/components/organisms/MovieForm.vue` with fields (title, director, duration, synopsis)
-- [ ] 8.7 Implement form validation in MovieForm (required fields, duration > 0)
-- [ ] 8.8 Add create mode logic in MovieForm (calls createMovie action)
-- [ ] 8.9 Add edit mode logic in MovieForm (loads existing movie, calls updateMovie action)
-- [ ] 8.10 Display API validation errors next to form fields in MovieForm
-- [ ] 8.11 Write unit tests for MovieForm in `/src/components/organisms/MovieForm.spec.ts`
-- [ ] 8.12 Create `/src/views/MovieFormView.vue` wrapper for create/edit routes
+- [x] 8.1 Create `/src/views/MoviesList.vue` with table, loading state, empty state, and "Create Movie" button
+- [x] 8.2 Implement fetchMovies call on component mount in MoviesList
+- [x] 8.3 Add navigation to create/edit routes in MoviesList
+- [x] 8.4 Implement delete confirmation dialog in MoviesList
+- [x] 8.5 Write unit tests for MoviesList in `/src/views/MoviesList.spec.ts`
+- [x] 8.6 Create `/src/components/organisms/MovieForm.vue` with fields (title, director, duration, synopsis)
+- [x] 8.7 Implement form validation in MovieForm (required fields, duration > 0)
+- [x] 8.8 Add create mode logic in MovieForm (calls createMovie action)
+- [x] 8.9 Add edit mode logic in MovieForm (loads existing movie, calls updateMovie action)
+- [x] 8.10 Display API validation errors next to form fields in MovieForm
+- [x] 8.11 Write unit tests for MovieForm in `/src/components/organisms/MovieForm.spec.ts`
+- [x] 8.12 Create `/src/views/MovieFormView.vue` wrapper for create/edit routes
+- [x] 8.13 Configure Vue Router with movies CRUD routes (/movies, /movies/new, /movies/:id/edit)
 
 ## 9. Room Management Views
 

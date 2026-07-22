@@ -55,7 +55,7 @@ describe('ConfirmDialog Component', () => {
 
     await wrapper.vm.$nextTick()
 
-    expect(document.querySelector('.modal__title')?.textContent).toBe('Confirm Action')
+    expect(document.querySelector('.modal__title')?.textContent).toBe('Confirmar Ação')
 
     wrapper.unmount()
   })

@@ -14,17 +14,17 @@
             variant="ghost"
             size="sm"
             @click.stop="handleEdit(row)"
-            aria-label="Edit room"
+            aria-label="Editar sala"
           >
-            ✏️
+            <PencilIcon :size="16" />
           </Button>
           <Button
             variant="ghost"
             size="sm"
             @click.stop="handleDelete(row)"
-            aria-label="Delete room"
+            aria-label="Excluir sala"
           >
-            🗑️
+            <Trash2Icon :size="16" />
           </Button>
         </div>
       </td>
@@ -33,6 +33,7 @@
 </template>
 
 <script setup lang="ts">
+import { PencilIcon, Trash2Icon } from 'lucide-vue-next'
 import Table, { type TableColumn } from './Table.vue'
 import Button from '@/components/atoms/Button.vue'
 import type { Room } from '@/types/models'
@@ -49,20 +50,20 @@ interface Emits {
 }
 
 withDefaults(defineProps<Props>(), {
-  emptyMessage: 'No rooms found. Create your first room to get started.'
+  emptyMessage: 'Nenhuma sala encontrada. Crie sua primeira sala para começar.'
 })
 
 const emit = defineEmits<Emits>()
 
 const columns: TableColumn[] = [
-  { key: 'number', label: 'Room Number', sortable: true },
-  { key: 'created_at', label: 'Created At', sortable: true },
-  { key: 'actions', label: 'Actions', sortable: false }
+  { key: 'number', label: 'Número da Sala', sortable: true },
+  { key: 'created_at', label: 'Criado em', sortable: true },
+  { key: 'actions', label: 'Ações', sortable: false }
 ]
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString)
-  return new Intl.DateTimeFormat('en-US', {
+  return new Intl.DateTimeFormat('pt-BR', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',

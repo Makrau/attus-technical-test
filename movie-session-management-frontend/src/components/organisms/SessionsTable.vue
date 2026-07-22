@@ -10,13 +10,13 @@
         <span v-if="row.movie" class="sessions-table__movie-title">
           {{ row.movie.title }}
         </span>
-        <span v-else class="sessions-table__missing">Unknown Movie</span>
+        <span v-else class="sessions-table__missing">Filme Desconhecido</span>
       </td>
       <td>
         <span v-if="row.room" class="sessions-table__room-number">
-          Room {{ row.room.number }}
+          Sala {{ row.room.number }}
         </span>
-        <span v-else class="sessions-table__missing">Unknown Room</span>
+        <span v-else class="sessions-table__missing">Sala Desconhecida</span>
       </td>
       <td>{{ formatDateTime(row.starts_at) }}</td>
       <td>{{ formatDateTime(row.ends_at) }}</td>
@@ -32,17 +32,17 @@
             variant="ghost"
             size="sm"
             @click.stop="handleEdit(row)"
-            aria-label="Edit session"
+            aria-label="Editar sessão"
           >
-            ✏️
+            <PencilIcon :size="16" />
           </Button>
           <Button
             variant="ghost"
             size="sm"
             @click.stop="handleDelete(row)"
-            aria-label="Delete session"
+            aria-label="Excluir sessão"
           >
-            🗑️
+            <Trash2Icon :size="16" />
           </Button>
         </div>
       </td>
@@ -51,6 +51,7 @@
 </template>
 
 <script setup lang="ts">
+import { PencilIcon, Trash2Icon } from 'lucide-vue-next'
 import Table, { type TableColumn } from './Table.vue'
 import Button from '@/components/atoms/Button.vue'
 import type { SessionWithDetails } from '@/types/models'
@@ -67,23 +68,23 @@ interface Emits {
 }
 
 withDefaults(defineProps<Props>(), {
-  emptyMessage: 'No sessions found. Create your first session to get started.'
+  emptyMessage: 'Nenhuma sessão encontrada. Crie sua primeira sessão para começar.'
 })
 
 const emit = defineEmits<Emits>()
 
 const columns: TableColumn[] = [
-  { key: 'movie', label: 'Movie', sortable: false },
-  { key: 'room', label: 'Room', sortable: false },
-  { key: 'starts_at', label: 'Start Time', sortable: true },
-  { key: 'ends_at', label: 'End Time', sortable: true },
-  { key: 'duration', label: 'Duration', sortable: false },
-  { key: 'actions', label: 'Actions', sortable: false }
+  { key: 'movie', label: 'Filme', sortable: false },
+  { key: 'room', label: 'Sala', sortable: false },
+  { key: 'starts_at', label: 'Início', sortable: true },
+  { key: 'ends_at', label: 'Fim', sortable: true },
+  { key: 'duration', label: 'Duração', sortable: false },
+  { key: 'actions', label: 'Ações', sortable: false }
 ]
 
 function formatDateTime(dateString: string): string {
   const date = new Date(dateString)
-  return new Intl.DateTimeFormat('en-US', {
+  return new Intl.DateTimeFormat('pt-BR', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',

@@ -22,26 +22,56 @@ describe('Toast Component', () => {
     expect(wrapper.text()).toContain('Test message')
   })
 
-  it('displays correct icon for each type', async () => {
-    const types = [
-      { type: 'success', icon: '✓' },
-      { type: 'error', icon: '✕' },
-      { type: 'info', icon: 'ℹ' },
-      { type: 'warning', icon: '⚠' }
-    ] as const
+  it('displays correct icon for success type', () => {
+    const wrapper = mount(Toast, {
+      props: {
+        message: 'Test',
+        type: 'success',
+        show: true
+      }
+    })
 
-    for (const { type, icon } of types) {
-      const wrapper = mount(Toast, {
-        props: {
-          message: 'Test',
-          type,
-          show: true
-        }
-      })
+    expect(wrapper.find('.toast__icon svg').exists()).toBe(true)
+    expect(wrapper.find('.toast').classes()).toContain('toast--success')
+  })
 
-      expect(wrapper.find('.toast__icon').text()).toBe(icon)
-      expect(wrapper.find('.toast').classes()).toContain(`toast--${type}`)
-    }
+  it('displays correct icon for error type', () => {
+    const wrapper = mount(Toast, {
+      props: {
+        message: 'Test',
+        type: 'error',
+        show: true
+      }
+    })
+
+    expect(wrapper.find('.toast__icon svg').exists()).toBe(true)
+    expect(wrapper.find('.toast').classes()).toContain('toast--error')
+  })
+
+  it('displays correct icon for info type', () => {
+    const wrapper = mount(Toast, {
+      props: {
+        message: 'Test',
+        type: 'info',
+        show: true
+      }
+    })
+
+    expect(wrapper.find('.toast__icon svg').exists()).toBe(true)
+    expect(wrapper.find('.toast').classes()).toContain('toast--info')
+  })
+
+  it('displays correct icon for warning type', () => {
+    const wrapper = mount(Toast, {
+      props: {
+        message: 'Test',
+        type: 'warning',
+        show: true
+      }
+    })
+
+    expect(wrapper.find('.toast__icon svg').exists()).toBe(true)
+    expect(wrapper.find('.toast').classes()).toContain('toast--warning')
   })
 
   it('has correct accessibility attributes', () => {
@@ -142,6 +172,6 @@ describe('Toast Component', () => {
     })
 
     const closeButton = wrapper.find('.toast__close')
-    expect(closeButton.attributes('aria-label')).toBe('Close notification')
+    expect(closeButton.attributes('aria-label')).toBe('Fechar notificação')
   })
 })

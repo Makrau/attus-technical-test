@@ -60,7 +60,7 @@ describe('Table Component', () => {
       props: { columns, data: [] }
     })
 
-    expect(wrapper.find('.table__empty-message').text()).toBe('No data available')
+    expect(wrapper.find('.table__empty-message').text()).toBe('Nenhum dado disponível')
   })
 
   it('marks sortable columns', () => {
@@ -146,12 +146,14 @@ describe('Table Component', () => {
 
     const nameHeader = wrapper.findAll('.table__header-cell')[1]
     await nameHeader?.trigger('click')
+    await wrapper.vm.$nextTick()
 
-    const sortIcon = nameHeader?.find('.table__sort-icon')
-    expect(sortIcon?.text()).toBe('↑')
+    expect(wrapper.html()).toContain('lucide-chevron-up')
 
     await nameHeader?.trigger('click')
-    expect(sortIcon?.text()).toBe('↓')
+    await wrapper.vm.$nextTick()
+    
+    expect(wrapper.html()).toContain('lucide-chevron-down')
   })
 
   it('applies hover effect on rows', () => {

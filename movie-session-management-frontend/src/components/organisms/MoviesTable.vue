@@ -16,17 +16,17 @@
             variant="ghost"
             size="sm"
             @click.stop="handleEdit(row)"
-            aria-label="Edit movie"
+            aria-label="Editar filme"
           >
-            ✏️
+            <PencilIcon :size="16" />
           </Button>
           <Button
             variant="ghost"
             size="sm"
             @click.stop="handleDelete(row)"
-            aria-label="Delete movie"
+            aria-label="Excluir filme"
           >
-            🗑️
+            <Trash2Icon :size="16" />
           </Button>
         </div>
       </td>
@@ -35,6 +35,7 @@
 </template>
 
 <script setup lang="ts">
+import { PencilIcon, Trash2Icon } from 'lucide-vue-next'
 import Table, { type TableColumn } from './Table.vue'
 import Button from '@/components/atoms/Button.vue'
 import type { Movie } from '@/types/models'
@@ -51,17 +52,17 @@ interface Emits {
 }
 
 withDefaults(defineProps<Props>(), {
-  emptyMessage: 'No movies found. Create your first movie to get started.'
+  emptyMessage: 'Nenhum filme encontrado. Crie seu primeiro filme para começar.'
 })
 
 const emit = defineEmits<Emits>()
 
 const columns: TableColumn[] = [
-  { key: 'title', label: 'Title', sortable: true },
-  { key: 'director', label: 'Director', sortable: true },
-  { key: 'duration', label: 'Duration', sortable: true },
-  { key: 'synopsis', label: 'Synopsis', sortable: false },
-  { key: 'actions', label: 'Actions', sortable: false }
+  { key: 'title', label: 'Título', sortable: true },
+  { key: 'director', label: 'Diretor', sortable: true },
+  { key: 'duration', label: 'Duração', sortable: true },
+  { key: 'synopsis', label: 'Sinopse', sortable: false },
+  { key: 'actions', label: 'Ações', sortable: false }
 ]
 
 function formatDuration(minutes: number): string {
@@ -92,6 +93,20 @@ function handleRowClick(movie: Movie) {
   emit('row-click', movie)
 }
 </script>
+
+<style scoped>
+.movies-table__actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.movies-table__action-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+  justify-content: flex-end;
+  align-items: center;
+}
+</style>
 
 <style scoped>
 .movies-table__actions {

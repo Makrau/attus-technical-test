@@ -7,7 +7,7 @@
       :class="['toast', `toast--${type}`]"
     >
       <div class="toast__icon">
-        {{ icon }}
+        <component :is="icon" :size="20" />
       </div>
       <div class="toast__content">
         <p class="toast__message">{{ message }}</p>
@@ -16,9 +16,9 @@
         v-if="dismissible"
         class="toast__close"
         @click="handleClose"
-        aria-label="Close notification"
+        aria-label="Fechar notificação"
       >
-        ✕
+        <XIcon :size="18" />
       </button>
     </div>
   </Transition>
@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
+import { CheckIcon, XIcon, InfoIcon, AlertTriangleIcon } from 'lucide-vue-next'
 
 type ToastType = 'success' | 'error' | 'info' | 'warning'
 
@@ -54,11 +55,11 @@ const visible = ref(false)
 let timeoutId: ReturnType<typeof setTimeout> | null = null
 
 const icon = computed(() => {
-  const icons: Record<ToastType, string> = {
-    success: '✓',
-    error: '✕',
-    info: 'ℹ',
-    warning: '⚠'
+  const icons = {
+    success: CheckIcon,
+    error: XIcon,
+    info: InfoIcon,
+    warning: AlertTriangleIcon
   }
   return icons[props.type]
 })

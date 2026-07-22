@@ -16,10 +16,11 @@
               <span>{{ column.label }}</span>
               <span v-if="column.sortable" class="table__sort-icon">
                 <template v-if="sortKey === column.key">
-                  {{ sortOrder === 'asc' ? '↑' : '↓' }}
+                  <ChevronUpIcon v-if="sortOrder === 'asc'" :size="16" />
+                  <ChevronDownIcon v-else :size="16" />
                 </template>
                 <template v-else>
-                  ⇅
+                  <ChevronsUpDownIcon :size="16" />
                 </template>
               </span>
             </div>
@@ -51,6 +52,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { ChevronUpIcon, ChevronDownIcon, ChevronsUpDownIcon } from 'lucide-vue-next'
 
 export interface TableColumn {
   key: string
@@ -71,7 +73,7 @@ interface Emits {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  emptyMessage: 'No data available',
+  emptyMessage: 'Nenhum dado disponível',
   rowKey: 'id'
 })
 
@@ -143,6 +145,15 @@ function getRowKey(row: any, index: number) {
   color: var(--color-text);
   white-space: nowrap;
   user-select: none;
+  min-width: 120px;
+}
+
+.table__header-cell:first-child {
+  min-width: 180px;
+}
+
+.table__header-cell:last-child {
+  min-width: 100px;
 }
 
 .table__header-cell--sortable {
@@ -188,6 +199,15 @@ function getRowKey(row: any, index: number) {
 .table__row :deep(td) {
   padding: var(--spacing-md) var(--spacing-lg);
   color: var(--color-text);
+  min-width: 120px;
+}
+
+.table__row :deep(td:first-child) {
+  min-width: 180px;
+}
+
+.table__row :deep(td:last-child) {
+  min-width: 100px;
 }
 
 .table__empty {

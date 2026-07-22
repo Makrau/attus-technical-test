@@ -12,6 +12,7 @@
   --color-error: #ef4444;
   --color-error-light: #f87171;
   --color-error-dark: #dc2626;
+  --color-danger: var(--color-error);  /* Alias para consistência */
   
   --color-warning: #f59e0b;
   --color-warning-light: #fbbf24;
@@ -31,6 +32,12 @@
   --color-bg-tertiary: #f3f4f6;
   --color-bg-disabled: #e5e7eb;
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* Design System Aliases */
+  --color-surface: var(--color-bg-primary);
+  --color-muted: var(--color-bg-secondary);
+  --color-text: var(--color-text-primary);
+  --color-text-light: var(--color-text-secondary);
   
   --color-border: #e5e7eb;
   --color-border-hover: #d1d5db;
@@ -58,7 +65,15 @@
   --line-height-relaxed: 1.75;
   
   /* SPACING */
+  --spacing-xs: 0.5rem;      /* 8px */
+  --spacing-sm: 0.75rem;     /* 12px */
+  --spacing-md: 1rem;        /* 16px */
+  --spacing-lg: 1.5rem;      /* 24px */
+  --spacing-xl: 2rem;        /* 32px */
+  --spacing-2xl: 3rem;       /* 48px */
+  --spacing-3xl: 4rem;       /* 64px */
   
+  /* Legacy spacing (mantidos para compatibilidade) */
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;

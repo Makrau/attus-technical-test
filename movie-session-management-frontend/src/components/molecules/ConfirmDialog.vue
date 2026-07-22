@@ -48,9 +48,9 @@ interface Emits {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  title: 'Confirm Action',
-  confirmText: 'Confirm',
-  cancelText: 'Cancel',
+  title: 'Confirmar Ação',
+  confirmText: 'Confirmar',
+  cancelText: 'Cancelar',
   confirmVariant: 'danger',
   loading: false
 })
