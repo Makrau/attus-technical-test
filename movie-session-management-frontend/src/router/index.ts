@@ -25,6 +25,21 @@ const router = createRouter({
       component: () => import('../views/MovieFormView.vue'),
     },
     {
+      path: '/rooms',
+      name: 'rooms',
+      component: () => import('../views/RoomsList.vue'),
+    },
+    {
+      path: '/rooms/new',
+      name: 'rooms-new',
+      component: () => import('../views/RoomFormView.vue'),
+    },
+    {
+      path: '/rooms/:id/edit',
+      name: 'rooms-edit',
+      component: () => import('../views/RoomFormView.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue'),

@@ -100,17 +100,18 @@
 
 ## 9. Room Management Views
 
-- [ ] 9.1 Create `/src/views/RoomsList.vue` with table, loading state, empty state, and "Create Room" button
-- [ ] 9.2 Implement fetchRooms call on component mount in RoomsList
-- [ ] 9.3 Add navigation to create/edit routes in RoomsList
-- [ ] 9.4 Implement delete confirmation dialog in RoomsList
-- [ ] 9.5 Write unit tests for RoomsList in `/src/views/RoomsList.spec.ts`
-- [ ] 9.6 Create `/src/components/organisms/RoomForm.vue` with number field and validation
-- [ ] 9.7 Implement form validation in RoomForm (required, positive integer, unique)
-- [ ] 9.8 Add create and edit mode logic in RoomForm
-- [ ] 9.9 Display duplicate number error from backend in RoomForm
-- [ ] 9.10 Write unit tests for RoomForm in `/src/components/organisms/RoomForm.spec.ts`
-- [ ] 9.11 Create `/src/views/RoomFormView.vue` wrapper for create/edit routes
+- [x] 9.1 Create `/src/views/RoomsList.vue` with table, loading state, empty state, and "Create Room" button
+- [x] 9.2 Implement fetchRooms call on component mount in RoomsList
+- [x] 9.3 Add navigation to create/edit routes in RoomsList
+- [x] 9.4 Implement delete confirmation dialog in RoomsList
+- [x] 9.5 Write unit tests for RoomsList in `/src/views/RoomsList.spec.ts`
+- [x] 9.6 Create `/src/components/organisms/RoomForm.vue` with number field and validation
+- [x] 9.7 Implement form validation in RoomForm (required, positive integer, unique)
+- [x] 9.8 Add create and edit mode logic in RoomForm
+- [x] 9.9 Display duplicate number error from backend in RoomForm
+- [x] 9.10 Write unit tests for RoomForm in `/src/components/organisms/RoomForm.spec.ts`
+- [x] 9.11 Create `/src/views/RoomFormView.vue` wrapper for create/edit routes
+- [x] 9.12 Configure Vue Router with rooms CRUD routes (/rooms, /rooms/new, /rooms/:id/edit)
 
 ## 10. Session Management Views
 
