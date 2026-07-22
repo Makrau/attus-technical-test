@@ -40,6 +40,21 @@ const router = createRouter({
       component: () => import('../views/RoomFormView.vue'),
     },
     {
+      path: '/sessions',
+      name: 'sessions',
+      component: () => import('../views/SessionsList.vue'),
+    },
+    {
+      path: '/sessions/new',
+      name: 'sessions-new',
+      component: () => import('../views/SessionFormView.vue'),
+    },
+    {
+      path: '/sessions/:id/edit',
+      name: 'sessions-edit',
+      component: () => import('../views/SessionFormView.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue'),

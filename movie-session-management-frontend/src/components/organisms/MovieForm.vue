@@ -76,6 +76,7 @@ import { useMoviesStore } from '@/stores/movies'
 import type { Movie } from '@/types/models'
 import type { CreateMovieDTO, UpdateMovieDTO } from '@/types/api'
 import { ValidationError, isValidationError } from '@/types/errors'
+import { translateFieldError } from '@/utils/errorTranslation'
 
 interface Props {
   movieId?: string
@@ -169,9 +170,11 @@ async function handleSubmit() {
     emit('success', movie)
   } catch (error) {
     if (isValidationError(error)) {
+      // Traduz e aplica erros do backend
       Object.keys(error.errors).forEach(key => {
         if (key in errors) {
-          errors[key as keyof typeof errors] = error.errors[key].join(', ')
+          const translatedMessage = translateFieldError(key, error.errors[key])
+          errors[key as keyof typeof errors] = translatedMessage
         }
       })
     } else {

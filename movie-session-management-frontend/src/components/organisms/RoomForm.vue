@@ -41,6 +41,7 @@ import { useRoomsStore } from '@/stores/rooms'
 import type { Room } from '@/types/models'
 import type { CreateRoomDTO, UpdateRoomDTO } from '@/types/api'
 import { isValidationError } from '@/types/errors'
+import { translateFieldError } from '@/utils/errorTranslation'
 
 interface Props {
   roomId?: string
@@ -109,9 +110,11 @@ async function handleSubmit() {
     emit('success', room)
   } catch (error) {
     if (isValidationError(error)) {
+      // Traduz e aplica erros do backend
       Object.keys(error.errors).forEach(key => {
         if (key in errors) {
-          errors[key as keyof typeof errors] = error.errors[key].join(', ')
+          const translatedMessage = translateFieldError(key, error.errors[key])
+          errors[key as keyof typeof errors] = translatedMessage
         }
       })
     } else {

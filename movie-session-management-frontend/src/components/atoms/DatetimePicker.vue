@@ -5,7 +5,7 @@
       <span v-if="required" class="datetime-picker__required">*</span>
     </label>
     <input
-      :value="modelValue"
+      :value="localValue"
       @input="handleInput"
       type="datetime-local"
       :disabled="disabled"
@@ -22,6 +22,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface Props {
   modelValue: string | null
   label?: string
@@ -36,14 +38,43 @@ interface Emits {
   (e: 'update:modelValue', value: string | null): void
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
+
+/**
+ * Converte o valor ISO 8601 (do backend) para o formato datetime-local
+ * Input datetime-local espera: YYYY-MM-DDTHH:mm (sem timezone, no fuso local)
+ */
+const localValue = computed(() => {
+  if (!props.modelValue) {
+    return ''
+  }
+
+  try {
+    // Parse da string ISO (ex: "2024-01-01T10:00:00Z")
+    const date = new Date(props.modelValue)
+    
+    // Converte para o formato datetime-local (YYYY-MM-DDTHH:mm)
+    // Precisamos usar o horário local, não UTC
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    const hours = String(date.getHours()).padStart(2, '0')
+    const minutes = String(date.getMinutes()).padStart(2, '0')
+    
+    return `${year}-${month}-${day}T${hours}:${minutes}`
+  } catch (error) {
+    console.error('Error parsing datetime:', error)
+    return ''
+  }
+})
 
 function handleInput(event: Event) {
   const target = event.target as HTMLInputElement
   const value = target.value
   
   if (value) {
+    // Converte o valor local para ISO 8601 antes de emitir
     const isoString = new Date(value).toISOString()
     emit('update:modelValue', isoString)
   } else {

@@ -115,20 +115,20 @@
 
 ## 10. Session Management Views
 
-- [ ] 10.1 Create `/src/views/SessionsList.vue` with table showing movie title, room number, start/end times
-- [ ] 10.2 Implement fetchSessions on mount and use sessionsWithDetails getter in SessionsList
-- [ ] 10.3 Add navigation to create/edit routes in SessionsList
-- [ ] 10.4 Implement delete confirmation dialog in SessionsList
-- [ ] 10.5 Write unit tests for SessionsList in `/src/views/SessionsList.spec.ts`
-- [ ] 10.6 Create `/src/components/organisms/SessionForm.vue` with movie select, room select, datetime picker
-- [ ] 10.7 Load movies and rooms on SessionForm mount for dropdown options
-- [ ] 10.8 Implement calculated end time preview (starts_at + movie.duration) in SessionForm
-- [ ] 10.9 Implement form validation in SessionForm (required movie, room, starts_at)
-- [ ] 10.10 Add create and edit mode logic in SessionForm
-- [ ] 10.11 Display time conflict error prominently near room/time fields in SessionForm
-- [ ] 10.12 Display backend validation errors (past time, insufficient advance notice) in SessionForm
-- [ ] 10.13 Write unit tests for SessionForm in `/src/components/organisms/SessionForm.spec.ts`
-- [ ] 10.14 Create `/src/views/SessionFormView.vue` wrapper for create/edit routes
+- [x] 10.1 Create `/src/views/SessionsList.vue` with table showing movie title, room number, start/end times
+- [x] 10.2 Implement fetchSessions on mount and use sessionsWithDetails getter in SessionsList
+- [x] 10.3 Add navigation to create/edit routes in SessionsList
+- [x] 10.4 Implement delete confirmation dialog in SessionsList
+- [x] 10.5 Write unit tests for SessionsList in `/src/views/SessionsList.spec.ts`
+- [x] 10.6 Create `/src/components/organisms/SessionForm.vue` with movie select, room select, datetime picker
+- [x] 10.7 Load movies and rooms on SessionForm mount for dropdown options
+- [x] 10.8 Implement calculated end time preview (starts_at + movie.duration) in SessionForm
+- [x] 10.9 Implement form validation in SessionForm (required movie, room, starts_at)
+- [x] 10.10 Add create and edit mode logic in SessionForm
+- [x] 10.11 Display time conflict error prominently near room/time fields in SessionForm
+- [x] 10.12 Display backend validation errors (past time, insufficient advance notice) in SessionForm
+- [x] 10.13 Write unit tests for SessionForm in `/src/components/organisms/SessionForm.spec.ts`
+- [x] 10.14 Create `/src/views/SessionFormView.vue` wrapper for create/edit routes
 
 ## 11. Routing Configuration
 
