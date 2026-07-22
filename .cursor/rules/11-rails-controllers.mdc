@@ -1,0 +1,57 @@
+---
+description: Convenções de controllers, strong parameters e códigos HTTP de erro
+globs: backend/app/controllers/**/*.rb
+alwaysApply: false
+---
+
+# Convenções de Controller
+
+## Strong parameters
+
+- Nunca incluir `ends_at` nos parâmetros permitidos — ele é sempre calculado no model, nunca aceito via requisição.
+
+```ruby
+def session_params
+  params.require(:session).permit(:starts_at, :movie_id, :room_id)
+end
+```
+
+## Códigos HTTP de erro
+
+| Situação | Código | Motivo |
+|---|---|---|
+| Body vazio, JSON malformado, ou chave raiz obrigatória ausente (`params.require` falha) | `400 Bad Request` | Erro de sintaxe/estrutura da requisição |
+| JSON válido, mas dados não passam nas validações do model | `422 Unprocessable Entity` | Erro semântico — requisição entendida, mas dados violam regras de negócio |
+
+Tratamento centralizado via `rescue_from` em `ApplicationController`:
+
+```ruby
+class ApplicationController < ActionController::API
+  rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
+  rescue_from ActionDispatch::Http::Parameters::ParseError, with: :handle_bad_request
+
+  private
+
+  def handle_parameter_missing(exception)
+    render json: { error: exception.message }, status: :bad_request
+  end
+
+  def handle_bad_request
+    render json: { error: "Corpo da requisição inválido ou vazio" }, status: :bad_request
+  end
+end
+```
+
+## Create/Update padrão
+
+```ruby
+def create
+  session = Session.new(session_params)
+
+  if session.save
+    render json: session, status: :created
+  else
+    render json: { errors: session.errors }, status: :unprocessable_entity
+  end
+end
+```

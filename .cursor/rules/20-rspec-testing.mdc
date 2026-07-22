@@ -1,0 +1,85 @@
+---
+description: Convenções de testes com RSpec, FactoryBot e Shoulda Matchers
+globs: backend/spec/**/*.rb
+alwaysApply: false
+---
+
+# Testes — RSpec, FactoryBot, Shoulda Matchers
+
+## Gems da stack de teste
+
+```ruby
+group :development, :test do
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "faker"
+end
+
+group :test do
+  gem "shoulda-matchers"
+end
+```
+
+**Não usar `database_cleaner`** — `config.use_transactional_fixtures = true` (padrão) já garante isolamento por transação revertida a cada teste. `database_cleaner` só se justifica com testes de sistema via browser (JS), o que não se aplica a este projeto (API-only).
+
+## Tipos de spec priorizados
+
+- `spec/models/` — validações e callbacks do model (ex.: cálculo de `ends_at`).
+- `spec/validators/` — testes isolados dos `ActiveModel::Validator` customizados.
+- `spec/requests/` — testes de integração ponta a ponta (routing → controller → response). **Preferir sobre `controller specs`**, que estão obsoletos no ecossistema Rails moderno.
+
+## Factories
+
+Local: `spec/factories/`. Usar Faker para dados realistas, evitar strings fixas hardcoded.
+
+```ruby
+FactoryBot.define do
+  factory :movie do
+    title { Faker::Movie.title }
+    duration { 120 }
+  end
+end
+
+FactoryBot.define do
+  factory :session do
+    association :movie
+    association :room
+    starts_at { 1.day.from_now.change(hour: 20) }
+  end
+end
+```
+
+## Time helpers
+
+Usar `ActiveSupport::Testing::TimeHelpers` (nativo do Rails) para testes envolvendo `starts_at`/`ends_at`, evitando flakiness de tempo real de execução:
+
+```ruby
+config.include ActiveSupport::Testing::TimeHelpers
+```
+
+```ruby
+travel_to Time.zone.local(2026, 7, 25, 10, 0, 0) do
+  # ...
+end
+```
+
+## Casos de borda obrigatórios para choque de horário
+
+Ao escrever ou sugerir testes para `NoOverlappingSessionValidator`, sempre cobrir:
+
+- Sobreposição total (mesmo horário exato).
+- Sobreposição parcial (início ou fim dentro do intervalo existente).
+- Sessão que **termina exatamente quando outra começa** (não deve ser considerado choque).
+- Mesma sala, horários diferentes sem sobreposição (deve ser válido).
+- Salas diferentes, mesmo horário (deve ser válido — não há choque entre salas distintas).
+- Update de uma sessão existente não deve colidir consigo mesma (exclusão do próprio `id` na query).
+
+## Shoulda Matchers
+
+Configurado em `spec/support/shoulda_matchers.rb`. Usar para reduzir boilerplate em specs de model:
+
+```ruby
+it { should belong_to(:movie) }
+it { should belong_to(:room) }
+it { should validate_presence_of(:starts_at) }
+```
