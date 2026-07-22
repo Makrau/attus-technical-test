@@ -149,6 +149,25 @@ button:disabled {
 
 /* LAYOUT */
 
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  z-index: 9999;
+  font-weight: var(--font-weight-medium);
+  transition: top var(--transition-fast);
+}
+
+.skip-to-content:focus {
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+}
+
 #app {
   min-height: 100vh;
   display: flex;

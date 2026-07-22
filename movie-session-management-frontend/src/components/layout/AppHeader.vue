@@ -1,19 +1,20 @@
 <template>
-  <header class="app-header">
+  <header class="app-header" role="banner">
     <button 
       class="app-header__toggle"
       @click="$emit('toggle-sidebar')"
-      aria-label="Toggle menu"
+      aria-label="Alternar menu de navegação"
+      aria-controls="app-sidebar"
     >
-      <MenuIcon :size="24" />
+      <MenuIcon :size="24" aria-hidden="true" />
     </button>
     
     <div class="app-header__title">
-      <FilmIcon :size="24" />
+      <FilmIcon :size="24" aria-hidden="true" />
       <h1>Cinema Manager</h1>
     </div>
     
-    <nav class="app-header__nav">
+    <nav class="app-header__nav" aria-label="Navegação principal">
       <router-link to="/dashboard" class="app-header__link">
         Dashboard
       </router-link>

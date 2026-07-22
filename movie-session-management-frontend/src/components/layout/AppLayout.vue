@@ -1,5 +1,9 @@
 <template>
   <div class="app-layout">
+    <a href="#main-content" class="skip-to-content">
+      Pular para o conteúdo principal
+    </a>
+    
     <AppHeader @toggle-sidebar="toggleSidebar" />
     
     <div class="app-layout__container">
@@ -8,10 +12,13 @@
         @close="closeSidebar"
       />
       
-      <main class="app-layout__main">
+      <main id="main-content" class="app-layout__main" role="main" tabindex="-1">
         <slot />
       </main>
     </div>
+
+    <ToastContainer />
+    <LoadingOverlay :show="uiStore.isLoading" :message="uiStore.loadingMessage || undefined" />
   </div>
 </template>
 
@@ -19,7 +26,11 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import AppHeader from './AppHeader.vue'
 import AppSidebar from './AppSidebar.vue'
+import ToastContainer from '@/components/molecules/ToastContainer.vue'
+import LoadingOverlay from '@/components/molecules/LoadingOverlay.vue'
+import { useUIStore } from '@/stores/ui'
 
+const uiStore = useUIStore()
 const isSidebarOpen = ref(false)
 
 function toggleSidebar() {

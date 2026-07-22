@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import AppLayout from './components/layout/AppLayout.vue'
+import ErrorBoundary from './components/organisms/ErrorBoundary.vue'
 </script>
 
 <template>
-  <AppLayout>
-    <RouterView />
-  </AppLayout>
+  <ErrorBoundary>
+    <AppLayout>
+      <RouterView />
+    </AppLayout>
+  </ErrorBoundary>
 </template>
 
-<style scoped>
-/* Application layout styles */
+<style>
+@import './styles/variables.css';
+@import './styles/base.css';
 </style>

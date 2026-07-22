@@ -48,12 +48,14 @@ import Spinner from '@/components/atoms/Spinner.vue'
 import SessionsTable from '@/components/organisms/SessionsTable.vue'
 import ConfirmDialog from '@/components/molecules/ConfirmDialog.vue'
 import { useSessionsStore } from '@/stores/sessions'
+import { useUIStore } from '@/stores/ui'
 import { useMoviesStore } from '@/stores/movies'
 import { useRoomsStore } from '@/stores/rooms'
 import type { SessionWithDetails } from '@/types/models'
 
 const router = useRouter()
 const sessionsStore = useSessionsStore()
+const uiStore = useUIStore()
 const moviesStore = useMoviesStore()
 const roomsStore = useRoomsStore()
 
@@ -89,10 +91,12 @@ async function handleDeleteConfirm() {
 
   try {
     await sessionsStore.deleteSession(sessionToDelete.value.id)
+    uiStore.showToast('Sessão excluída com sucesso!', 'success')
     showDeleteDialog.value = false
     sessionToDelete.value = null
   } catch (error) {
     console.error('Failed to delete session:', error)
+    uiStore.showToast('Erro ao excluir sessão. Tente novamente.', 'error')
   }
 }
 

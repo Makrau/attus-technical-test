@@ -61,12 +61,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import type { CreateSessionDTO, UpdateSessionDTO } from '@/types/api'
 import { useSessionsStore } from '@/stores/sessions'
 import { useMoviesStore } from '@/stores/movies'
 import { useRoomsStore } from '@/stores/rooms'
+import { useUIStore } from '@/stores/ui'
 import { isValidationError } from '@/types/errors'
 import { translateFieldError } from '@/utils/errorTranslation'
 import Card from '@/components/atoms/Card.vue'
@@ -85,6 +86,7 @@ const router = useRouter()
 const sessionsStore = useSessionsStore()
 const moviesStore = useMoviesStore()
 const roomsStore = useRoomsStore()
+const uiStore = useUIStore()
 
 const isEditMode = computed(() => !!props.sessionId)
 const isSubmitting = ref(false)
@@ -158,6 +160,12 @@ onMounted(async () => {
       backendError.value = 'Erro ao carregar sessão'
     }
   }
+  
+  // Focus no primeiro select
+  nextTick(() => {
+    const firstSelect = document.querySelector<HTMLSelectElement>('.session-form select')
+    firstSelect?.focus()
+  })
 })
 
 watch(() => formData.value.movie_id, () => {
@@ -213,8 +221,10 @@ async function handleSubmit() {
   try {
     if (isEditMode.value && props.sessionId) {
       await sessionsStore.updateSession(props.sessionId, formData.value as UpdateSessionDTO)
+      uiStore.showToast('Sessão atualizada com sucesso!', 'success')
     } else {
       await sessionsStore.createSession(formData.value)
+      uiStore.showToast('Sessão criada com sucesso!', 'success')
     }
 
     router.push({ name: 'sessions' })
@@ -253,8 +263,10 @@ async function handleSubmit() {
           errors.value.time_conflict = translatedError
         }
       }
+      uiStore.showToast('Erro de validação. Verifique os campos.', 'error')
     } else {
       backendError.value = error instanceof Error ? error.message : 'Erro ao salvar sessão'
+      uiStore.showToast('Erro ao salvar sessão. Tente novamente.', 'error')
     }
   } finally {
     isSubmitting.value = false

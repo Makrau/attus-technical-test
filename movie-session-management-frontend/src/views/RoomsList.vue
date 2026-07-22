@@ -49,10 +49,12 @@ import Spinner from '@/components/atoms/Spinner.vue'
 import RoomsTable from '@/components/organisms/RoomsTable.vue'
 import ConfirmDialog from '@/components/molecules/ConfirmDialog.vue'
 import { useRoomsStore } from '@/stores/rooms'
+import { useUIStore } from '@/stores/ui'
 import type { Room } from '@/types/models'
 
 const router = useRouter()
 const roomsStore = useRoomsStore()
+const uiStore = useUIStore()
 
 const showDeleteDialog = ref(false)
 const roomToDelete = ref<Room | null>(null)
@@ -81,10 +83,12 @@ async function handleDeleteConfirm() {
   deleteLoading.value = true
   try {
     await roomsStore.deleteRoom(roomToDelete.value.id)
+    uiStore.showToast('Sala excluída com sucesso!', 'success')
     showDeleteDialog.value = false
     roomToDelete.value = null
   } catch (error) {
     console.error('Erro ao excluir sala:', error)
+    uiStore.showToast('Erro ao excluir sala. Tente novamente.', 'error')
   } finally {
     deleteLoading.value = false
   }

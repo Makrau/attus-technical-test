@@ -8,6 +8,8 @@ export const useUIStore = defineStore('ui', () => {
   const modalType = ref<string | null>(null)
   const toastMessage = ref<string | null>(null)
   const toastType = ref<ToastType>(null)
+  const isLoading = ref(false)
+  const loadingMessage = ref<string | null>(null)
   
   let toastTimeout: ReturnType<typeof setTimeout> | null = null
 
@@ -46,16 +48,30 @@ export const useUIStore = defineStore('ui', () => {
   const isModalOpen = computed(() => showModal.value)
   const hasToast = computed(() => toastMessage.value !== null)
 
+  function startLoading(message: string | null = null) {
+    isLoading.value = true
+    loadingMessage.value = message
+  }
+
+  function stopLoading() {
+    isLoading.value = false
+    loadingMessage.value = null
+  }
+
   return {
     showModal,
     modalType,
     toastMessage,
     toastType,
+    isLoading,
+    loadingMessage,
     isModalOpen,
     hasToast,
     openModal,
     closeModal,
     showToast,
-    clearToast
+    clearToast,
+    startLoading,
+    stopLoading
   }
 })

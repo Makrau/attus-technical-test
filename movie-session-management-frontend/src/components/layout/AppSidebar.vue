@@ -5,15 +5,22 @@
         v-if="isOpen" 
         class="app-sidebar__backdrop"
         @click="$emit('close')"
+        aria-hidden="true"
       />
     </Transition>
   </Teleport>
 
   <Transition name="sidebar">
-    <aside v-if="isOpen || isDesktop" class="app-sidebar">
+    <aside 
+      v-if="isOpen || isDesktop" 
+      id="app-sidebar"
+      class="app-sidebar"
+      role="navigation"
+      aria-label="Menu lateral"
+    >
       <div class="app-sidebar__header">
         <div class="app-sidebar__logo">
-          <FilmIcon :size="32" />
+          <FilmIcon :size="32" aria-hidden="true" />
           <span>Cinema Manager</span>
         </div>
         
@@ -22,17 +29,17 @@
           @click="$emit('close')"
           aria-label="Fechar menu"
         >
-          <XIcon :size="24" />
+          <XIcon :size="24" aria-hidden="true" />
         </button>
       </div>
 
-      <nav class="app-sidebar__nav">
+      <nav class="app-sidebar__nav" aria-label="Navegação do menu lateral">
         <router-link 
           to="/dashboard" 
           class="app-sidebar__link"
           @click="handleLinkClick"
         >
-          <LayoutDashboardIcon :size="20" />
+          <LayoutDashboardIcon :size="20" aria-hidden="true" />
           <span>Dashboard</span>
         </router-link>
 
@@ -41,7 +48,7 @@
           class="app-sidebar__link"
           @click="handleLinkClick"
         >
-          <FilmIcon :size="20" />
+          <FilmIcon :size="20" aria-hidden="true" />
           <span>Filmes</span>
         </router-link>
 
@@ -50,7 +57,7 @@
           class="app-sidebar__link"
           @click="handleLinkClick"
         >
-          <DoorOpenIcon :size="20" />
+          <DoorOpenIcon :size="20" aria-hidden="true" />
           <span>Salas</span>
         </router-link>
 
@@ -59,7 +66,7 @@
           class="app-sidebar__link"
           @click="handleLinkClick"
         >
-          <CalendarIcon :size="20" />
+          <CalendarIcon :size="20" aria-hidden="true" />
           <span>Sessões</span>
         </router-link>
       </nav>

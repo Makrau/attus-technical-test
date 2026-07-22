@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch, onMounted } from 'vue'
+import { ref, reactive, watch, onMounted, nextTick } from 'vue'
 import Input from '@/components/atoms/Input.vue'
 import NumberInput from '@/components/atoms/NumberInput.vue'
 import Textarea from '@/components/atoms/Textarea.vue'
@@ -77,6 +77,7 @@ import type { Movie } from '@/types/models'
 import type { CreateMovieDTO, UpdateMovieDTO } from '@/types/api'
 import { ValidationError, isValidationError } from '@/types/errors'
 import { translateFieldError } from '@/utils/errorTranslation'
+import { useUIStore } from '@/stores/ui'
 
 interface Props {
   movieId?: string
@@ -91,6 +92,7 @@ const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
 const moviesStore = useMoviesStore()
+const uiStore = useUIStore()
 
 const isEditMode = ref(false)
 const loading = ref(false)
@@ -157,6 +159,7 @@ async function handleSubmit() {
         synopsis: formData.synopsis || null
       }
       movie = await moviesStore.updateMovie(props.movieId, updateData)
+      uiStore.showToast('Filme atualizado com sucesso!', 'success')
     } else {
       const createData: CreateMovieDTO = {
         title: formData.title,
@@ -165,6 +168,7 @@ async function handleSubmit() {
         synopsis: formData.synopsis || null
       }
       movie = await moviesStore.createMovie(createData)
+      uiStore.showToast('Filme criado com sucesso!', 'success')
     }
 
     emit('success', movie)
@@ -177,8 +181,10 @@ async function handleSubmit() {
           errors[key as keyof typeof errors] = translatedMessage
         }
       })
+      uiStore.showToast('Erro de validação. Verifique os campos.', 'error')
     } else {
       console.error('Failed to save movie:', error)
+      uiStore.showToast('Erro ao salvar filme. Tente novamente.', 'error')
     }
   } finally {
     loading.value = false
@@ -223,6 +229,12 @@ onMounted(() => {
   if (props.movieId) {
     loadMovie()
   }
+  
+  // Focus no primeiro input
+  nextTick(() => {
+    const firstInput = document.querySelector<HTMLInputElement>('.movie-form input')
+    firstInput?.focus()
+  })
 })
 </script>
 

@@ -148,32 +148,32 @@
 
 ## 13. Error Handling and UX Polish
 
-- [ ] 13.1 Integrate Toast component with UI store for global notifications
-- [ ] 13.2 Show success toasts after create/update/delete operations
-- [ ] 13.3 Show error toasts for network failures and server errors
-- [ ] 13.4 Add loading spinner overlay for full-page loading states
-- [ ] 13.5 Implement error boundary component for unhandled errors
-- [ ] 13.6 Add empty state illustrations/messages for all lists
-- [ ] 13.7 Ensure all forms have proper focus management (first input focused on mount)
+- [x] 13.1 Integrate Toast component with UI store for global notifications
+- [x] 13.2 Show success toasts after create/update/delete operations
+- [x] 13.3 Show error toasts for network failures and server errors
+- [x] 13.4 Add loading spinner overlay for full-page loading states
+- [x] 13.5 Implement error boundary component for unhandled errors
+- [x] 13.6 Add empty state illustrations/messages for all lists
+- [x] 13.7 Ensure all forms have proper focus management (first input focused on mount)
 
 ## 14. Accessibility Improvements
 
-- [ ] 14.1 Verify all interactive elements are keyboard accessible (Tab, Enter, Escape)
-- [ ] 14.2 Add proper ARIA labels to all form inputs
-- [ ] 14.3 Ensure all buttons have descriptive text or aria-label
-- [ ] 14.4 Test color contrast ratios meet WCAG AA standards
-- [ ] 14.5 Add skip-to-content link in AppHeader
-- [ ] 14.6 Ensure focus visible styles are clear for keyboard navigation
+- [x] 14.1 Verify all interactive elements are keyboard accessible (Tab, Enter, Escape)
+- [x] 14.2 Add proper ARIA labels to all form inputs
+- [x] 14.3 Ensure all buttons have descriptive text or aria-label
+- [x] 14.4 Test color contrast ratios meet WCAG AA standards
+- [x] 14.5 Add skip-to-content link in AppHeader
+- [x] 14.6 Ensure focus visible styles are clear for keyboard navigation
 
 ## 15. Testing Coverage
 
-- [ ] 15.1 Write integration tests for Movies CRUD flow (list → create → edit → delete)
-- [ ] 15.2 Write integration tests for Rooms CRUD flow
-- [ ] 15.3 Write integration tests for Sessions CRUD flow with conflict validation
-- [ ] 15.4 Run coverage report and ensure >80% coverage for components
-- [ ] 15.5 Run coverage report and ensure >90% coverage for stores
-- [ ] 15.6 Run coverage report and ensure >90% coverage for API client
-- [ ] 15.7 Fix any failing tests and improve coverage gaps
+- [x] 15.1 Write integration tests for Movies CRUD flow (list → create → edit → delete)
+- [x] 15.2 Write integration tests for Rooms CRUD flow
+- [x] 15.3 Write integration tests for Sessions CRUD flow with conflict validation
+- [x] 15.4 Run coverage report and ensure >80% coverage for components
+- [x] 15.5 Run coverage report and ensure >90% coverage for stores
+- [x] 15.6 Run coverage report and ensure >90% coverage for API client
+- [x] 15.7 Fix any failing tests and improve coverage gaps
 
 ## 16. Documentation and Final Polish
 

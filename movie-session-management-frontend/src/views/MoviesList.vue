@@ -47,10 +47,12 @@ import Spinner from '@/components/atoms/Spinner.vue'
 import MoviesTable from '@/components/organisms/MoviesTable.vue'
 import ConfirmDialog from '@/components/molecules/ConfirmDialog.vue'
 import { useMoviesStore } from '@/stores/movies'
+import { useUIStore } from '@/stores/ui'
 import type { Movie } from '@/types/models'
 
 const router = useRouter()
 const moviesStore = useMoviesStore()
+const uiStore = useUIStore()
 
 const showDeleteDialog = ref(false)
 const movieToDelete = ref<Movie | null>(null)
@@ -79,10 +81,12 @@ async function handleDeleteConfirm() {
   deleteLoading.value = true
   try {
     await moviesStore.deleteMovie(movieToDelete.value.id)
+    uiStore.showToast('Filme excluído com sucesso!', 'success')
     showDeleteDialog.value = false
     movieToDelete.value = null
   } catch (error) {
     console.error('Failed to delete movie:', error)
+    uiStore.showToast('Erro ao excluir filme. Tente novamente.', 'error')
   } finally {
     deleteLoading.value = false
   }

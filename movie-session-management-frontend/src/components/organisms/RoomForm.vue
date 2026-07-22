@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch, onMounted } from 'vue'
+import { ref, reactive, watch, onMounted, nextTick } from 'vue'
 import NumberInput from '@/components/atoms/NumberInput.vue'
 import Button from '@/components/atoms/Button.vue'
 import FormField from '@/components/molecules/FormField.vue'
@@ -42,6 +42,7 @@ import type { Room } from '@/types/models'
 import type { CreateRoomDTO, UpdateRoomDTO } from '@/types/api'
 import { isValidationError } from '@/types/errors'
 import { translateFieldError } from '@/utils/errorTranslation'
+import { useUIStore } from '@/stores/ui'
 
 interface Props {
   roomId?: string
@@ -56,6 +57,7 @@ const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
 const roomsStore = useRoomsStore()
+const uiStore = useUIStore()
 
 const isEditMode = ref(false)
 const loading = ref(false)
@@ -100,11 +102,13 @@ async function handleSubmit() {
         number: formData.number!
       }
       room = await roomsStore.updateRoom(props.roomId, updateData)
+      uiStore.showToast('Sala atualizada com sucesso!', 'success')
     } else {
       const createData: CreateRoomDTO = {
         number: formData.number!
       }
       room = await roomsStore.createRoom(createData)
+      uiStore.showToast('Sala criada com sucesso!', 'success')
     }
 
     emit('success', room)
@@ -117,8 +121,10 @@ async function handleSubmit() {
           errors[key as keyof typeof errors] = translatedMessage
         }
       })
+      uiStore.showToast('Erro de validação. Verifique os campos.', 'error')
     } else {
       console.error('Erro ao salvar sala:', error)
+      uiStore.showToast('Erro ao salvar sala. Tente novamente.', 'error')
     }
   } finally {
     loading.value = false
@@ -160,6 +166,12 @@ onMounted(() => {
   if (props.roomId) {
     loadRoom()
   }
+  
+  // Focus no primeiro input
+  nextTick(() => {
+    const firstInput = document.querySelector<HTMLInputElement>('.room-form input')
+    firstInput?.focus()
+  })
 })
 </script>
 
