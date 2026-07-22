@@ -39,12 +39,10 @@ class SessionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_session
       @session = Session.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
     def session_params
       params.expect(session: [ :starts_at, :room_id, :movie_id ])
     end
