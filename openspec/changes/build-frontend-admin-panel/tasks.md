@@ -25,39 +25,39 @@
 - [x] 3.5 Create `/src/api/rooms.ts` with typed methods (getRooms, getRoom, createRoom, updateRoom, deleteRoom)
 - [x] 3.6 Create `/src/api/sessions.ts` with typed methods (getSessions, getSession, createSession, updateSession, deleteSession)
 - [x] 3.7 Implement request payload wrapping for Rails conventions (wrap with resource name)
-- [ ] 3.8 Write unit tests for API client error handling in `/src/api/client.spec.ts`
+- [x] 3.8 Write unit tests for API client error handling in `/src/api/client.spec.ts`
 
 ## 4. State Management with Pinia
 
-- [ ] 4.1 Create `/src/stores/movies.ts` with state structure (movies, loading, error, selectedMovie)
-- [ ] 4.2 Implement movies store actions (fetchMovies, fetchMovie, createMovie, updateMovie, deleteMovie)
-- [ ] 4.3 Implement movies store getters (allMovies sorted by title, movieById, isLoading, hasError)
-- [ ] 4.4 Create `/src/stores/rooms.ts` with state structure (rooms, loading, error, selectedRoom)
-- [ ] 4.5 Implement rooms store actions (fetchRooms, fetchRoom, createRoom, updateRoom, deleteRoom)
-- [ ] 4.6 Implement rooms store getters (allRooms sorted by number, roomById, isLoading, hasError)
-- [ ] 4.7 Create `/src/stores/sessions.ts` with state structure (sessions, loading, error, selectedSession)
-- [ ] 4.8 Implement sessions store actions (fetchSessions, fetchSession, createSession, updateSession, deleteSession)
-- [ ] 4.9 Implement sessions store getter sessionsWithDetails (joins with movies and rooms data)
-- [ ] 4.10 Create `/src/stores/ui.ts` with modal and toast state management
-- [ ] 4.11 Write unit tests for movies store in `/src/stores/movies.spec.ts`
-- [ ] 4.12 Write unit tests for rooms store in `/src/stores/rooms.spec.ts`
-- [ ] 4.13 Write unit tests for sessions store in `/src/stores/sessions.spec.ts`
+- [x] 4.1 Create `/src/stores/movies.ts` with state structure (movies, loading, error, selectedMovie)
+- [x] 4.2 Implement movies store actions (fetchMovies, fetchMovie, createMovie, updateMovie, deleteMovie)
+- [x] 4.3 Implement movies store getters (allMovies sorted by title, movieById, isLoading, hasError)
+- [x] 4.4 Create `/src/stores/rooms.ts` with state structure (rooms, loading, error, selectedRoom)
+- [x] 4.5 Implement rooms store actions (fetchRooms, fetchRoom, createRoom, updateRoom, deleteRoom)
+- [x] 4.6 Implement rooms store getters (allRooms sorted by number, roomById, isLoading, hasError)
+- [x] 4.7 Create `/src/stores/sessions.ts` with state structure (sessions, loading, error, selectedSession)
+- [x] 4.8 Implement sessions store actions (fetchSessions, fetchSession, createSession, updateSession, deleteSession)
+- [x] 4.9 Implement sessions store getter sessionsWithDetails (joins with movies and rooms data)
+- [x] 4.10 Create `/src/stores/ui.ts` with modal and toast state management
+- [x] 4.11 Write unit tests for movies store in `/src/stores/movies.spec.ts`
+- [x] 4.12 Write unit tests for rooms store in `/src/stores/rooms.spec.ts`
+- [x] 4.13 Write unit tests for sessions store in `/src/stores/sessions.spec.ts`
 
 ## 5. Atomic Components (Atoms)
 
-- [ ] 5.1 Create `/src/components/atoms/Button.vue` with variants (primary, secondary, danger, ghost) and sizes
-- [ ] 5.2 Add loading and disabled states to Button component
-- [ ] 5.3 Write unit tests for Button in `/src/components/atoms/Button.spec.ts`
-- [ ] 5.4 Create `/src/components/atoms/Input.vue` with label, error, required indicator, and disabled props
-- [ ] 5.5 Implement v-model binding in Input component
-- [ ] 5.6 Write unit tests for Input in `/src/components/atoms/Input.spec.ts`
-- [ ] 5.7 Create `/src/components/atoms/NumberInput.vue` with min/max validation
-- [ ] 5.8 Create `/src/components/atoms/Select.vue` with options, placeholder, and search capability
-- [ ] 5.9 Write unit tests for Select in `/src/components/atoms/Select.spec.ts`
-- [ ] 5.10 Create `/src/components/atoms/Textarea.vue` with rows prop and v-model binding
+- [x] 5.1 Create `/src/components/atoms/Button.vue` with variants (primary, secondary, danger, ghost) and sizes
+- [x] 5.2 Add loading and disabled states to Button component
+- [x] 5.3 Write unit tests for Button in `/src/components/atoms/Button.spec.ts`
+- [x] 5.4 Create `/src/components/atoms/Input.vue` with label, error, required indicator, and disabled props
+- [x] 5.5 Implement v-model binding in Input component
+- [x] 5.6 Write unit tests for Input in `/src/components/atoms/Input.spec.ts`
+- [x] 5.7 Create `/src/components/atoms/NumberInput.vue` with min/max validation
+- [x] 5.8 Create `/src/components/atoms/Select.vue` with options, placeholder, and search capability
+- [x] 5.9 Write unit tests for Select in `/src/components/atoms/Select.spec.ts`
+- [x] 5.10 Create `/src/components/atoms/Textarea.vue` with rows prop and v-model binding
 - [ ] 5.11 Create `/src/components/atoms/DatetimePicker.vue` with calendar and time selection (ISO 8601 output)
-- [ ] 5.12 Create `/src/components/atoms/Spinner.vue` with size variants (sm, md, lg)
-- [ ] 5.13 Create `/src/components/atoms/Card.vue` with header, body, footer slots
+- [x] 5.12 Create `/src/components/atoms/Spinner.vue` with size variants (sm, md, lg)
+- [x] 5.13 Create `/src/components/atoms/Card.vue` with header, body, footer slots
 
 ## 6. Molecular Components (Molecules)
 
